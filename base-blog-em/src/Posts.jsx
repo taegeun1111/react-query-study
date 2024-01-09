@@ -27,9 +27,12 @@ export function Posts() {
 
   // replace with useQuery
   const {data, isError, isLoading} = useQuery(["posts", currentPage], () => fetchPosts(currentPage), {
-    staleTime: 2000,
+    staleTime: 5000,
     keepPreviousData : true
   });
+  /*
+  5초 동안은 캐시뎅
+   */
   if (isLoading) return <h3>Loading</h3>;
 
   return (
